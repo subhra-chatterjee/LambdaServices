@@ -40,6 +40,18 @@ builds/
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# Visual Studio specific
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.vcxproj.*.user
+*.pdb
+*.opendb
+*.VC.opendb
+*.VC.db
+*.VC.VC.opendb
+*.VC.VC.db
+
 # Others
 *.vs
 *.idea
