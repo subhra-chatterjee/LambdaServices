@@ -1,6 +1,7 @@
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using SimpleApiLambda.DTO;
+using SimpleApiLambda.Services;
 
 namespace SimpleApiLambda;
 
@@ -8,6 +9,7 @@ public static class Endpoint
 {
     public static void MapEndpoints(WebApplication app)
     {
+        IProductService productService = app.Services.GetRequiredService<IProductService>();
         app.MapGet("/", () => "Welcome to Lambda");
 
         // For product Endpoint
@@ -22,8 +24,7 @@ public static class Endpoint
         //get all list of product
         app.MapGet("/product", async (IDynamoDBContext dynamoDBContext) =>
         {
-            var condition = new List<ScanCondition>();
-            var allProduct = await dynamoDBContext.ScanAsync<Product>(condition).GetRemainingAsync();
+            var allProduct = await productService.GetProductsAll(new Product());
             return Results.Ok(allProduct);
         });
 
