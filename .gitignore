@@ -52,6 +52,10 @@ builds/
 *.VC.VC.opendb
 *.VC.VC.db
 
+# Ignore obj folder and its contents
+obj/
+*.json
+
 # Others
 *.vs
 *.idea
@@ -70,6 +74,9 @@ appsettings.*.json
 # JetBrains Rider
 .idea/
 *.iml
+# Build results
+bin/
+obj/
 
 # Backup files
 *.bak
